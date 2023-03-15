@@ -1,11 +1,6 @@
-import {
-  Inter,
-  Roboto_Mono,
-  Space_Grotesk,
-  League_Spartan,
-} from "next/font/google";
+import { Roboto_Mono, League_Spartan } from "next/font/google";
 import Providers from "@/components/Providers";
-import Navbar from "@/components/Navbar";
+
 import "./globals.css";
 
 const spaceg = League_Spartan({
@@ -26,11 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${roboto_mono.variable} ${spaceg.variable}`}>
       <body>
-        <Providers>
-          {/* <Navbar /> */}
-
-          {children}
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
