@@ -7,7 +7,9 @@ export default NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
+      // @ts-ignore
       clientId: process.env.GOOGLE_CLIENT_ID,
+      // @ts-ignore
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
