@@ -1,10 +1,9 @@
 import React from "react";
-function Services({ services }) {
+
+export default function Services() {
   return (
     <div className="bg-white py-16">
-      <h1>Services</h1>
-      {JSON.stringify(services)}
-      {/* <div className="container">
+      <div className="container">
         <div className="sm:text-center lg:text-left">
           <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
             Our Services
@@ -82,21 +81,7 @@ function Services({ services }) {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
-
-export async function getStaticProps() {
-  const res = await fetch("/api/services/get");
-  const services = await res.json();
-  console.log("hey");
-
-  return {
-    props: {
-      services,
-    },
-  };
-}
-
-export default Services;
