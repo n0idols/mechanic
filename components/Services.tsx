@@ -2,6 +2,7 @@ import React from "react";
 function Services({ services }) {
   return (
     <div className="bg-white py-16">
+      <h1>Services</h1>
       {JSON.stringify(services)}
       {/* <div className="container">
         <div className="sm:text-center lg:text-left">
@@ -89,6 +90,7 @@ function Services({ services }) {
 export async function getStaticProps() {
   const res = await fetch("/api/services/get");
   const services = await res.json();
+  console.log("hey");
 
   return {
     props: {

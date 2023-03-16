@@ -21,9 +21,9 @@ export default function About() {
             pride ourselves on our excellent customer service.
           </p>
           <p className="mt-4 text-xl text-gray-600">
-            If you're looking for a reliable and trustworthy mechanic shop, look
-            no further than [Shop Name]. We're here to help with all your auto
-            repair needs.
+            If you`&apos;`re looking for a reliable and trustworthy mechanic
+            shop, look no further than [Shop Name]. We`&apos;`re here to help
+            with all your auto repair needs.
           </p>
         </div>
       </div>

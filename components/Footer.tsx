@@ -2,12 +2,7 @@ export default function Footer() {
   return (
     <footer className="footer-section">
       <div className="footer-content">
-        <div className="footer-logo">
-          <img
-            src="https://cdn.example.com/mechanic-logo.png"
-            alt="Mechanic Logo"
-          />
-        </div>
+        <div className="footer-logo">logo</div>
         <div className="footer-links">
           <a href="#">Home</a>
           <a href="#">Services</a>
