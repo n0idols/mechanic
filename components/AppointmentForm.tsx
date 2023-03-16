@@ -18,19 +18,19 @@ interface Service {
   desc: string;
 }
 
+interface formValues {
+  date: string;
+  timeSlotId: string;
+  serviceId: string;
+  user: string;
+}
+
 export default function AppointmentForm() {
   const appointmentMutation = useCreateAppointment();
   const servicesQuery = useServices();
   const timeslotsQuery = useTimeslots();
 
   const { data: session } = useSession();
-
-  //   const [values, setValues] = useState({
-  //     date: "",
-  //     timeSlotId: "0",
-  //     serviceId: "0",
-  //     user: "",
-  //   });
 
   const initialState = {
     date: "",
@@ -39,12 +39,11 @@ export default function AppointmentForm() {
     user: "",
   };
 
-  // getting the event handlers from our custom hook
   const { onChange, onSubmit, values } = useForm(fireMutation, initialState);
 
-  // a submit function that will execute upon form submission
+  const theValues: formValues = values;
   async function fireMutation() {
-    appointmentMutation.mutate(values);
+    appointmentMutation.mutate(theValues);
   }
 
   // useEffect(() => {

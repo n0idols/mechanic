@@ -6,7 +6,7 @@ export default function useCreateAppointment() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (values) => axios.post("/api/appointments/create", values),
+    mutationFn: (values: any) => axios.post("/api/appointments/create", values),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["appointmentData"] });
     },
