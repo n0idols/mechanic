@@ -32,10 +32,10 @@ export default function Services() {
                 Brake Repair
               </h3>
               <p className="mt-4 text-base text-gray-600">
-                If you're experiencing issues with your brakes, our mechanics
-                can diagnose and fix the problem quickly and efficiently. We
-                offer brake pad replacement, rotor resurfacing, and other brake
-                repair services.
+                If you`&apos;`re experiencing issues with your brakes, our
+                mechanics can diagnose and fix the problem quickly and
+                efficiently. We offer brake pad replacement, rotor resurfacing,
+                and other brake repair services.
               </p>
             </div>
             <div className="bg-gray-100 border border-gray-200 p-6 rounded-lg">
@@ -43,8 +43,8 @@ export default function Services() {
                 Engine Diagnostics
               </h3>
               <p className="mt-4 text-base text-gray-600">
-                If your check engine light is on or you're experiencing engine
-                issues, our team can use advanced diagnostic equipment to
+                If your check engine light is on or you`&apos;`re experiencing
+                engine issues, our team can use advanced diagnostic equipment to
                 pinpoint the problem and provide the necessary repairs.
               </p>
             </div>
@@ -64,9 +64,10 @@ export default function Services() {
                 Air Conditioning
               </h3>
               <p className="mt-4 text-base text-gray-600">
-                If your air conditioning isn't working properly, our mechanics
-                can diagnose and repair the problem. We offer air conditioning
-                recharge, compressor replacement, and other AC services.
+                If your air conditioning isn`&apos;`t working properly, our
+                mechanics can diagnose and repair the problem. We offer air
+                conditioning recharge, compressor replacement, and other AC
+                services.
               </p>
             </div>
             <div className="bg-gray-100 border border-gray-200 p-6 rounded-lg">
