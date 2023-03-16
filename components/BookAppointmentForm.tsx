@@ -5,7 +5,7 @@ import useServices from "@/hooks/useServices";
 import useTimeslots from "@/hooks/useTimeslots";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
-import { useForm } from "@/hooks/useForma";
+import { useForm } from "react-hook-form";
 
 interface Time {
   id: string;
@@ -26,25 +26,12 @@ interface formValues {
 }
 
 export default function AppointmentForm() {
+  const { register, handleSubmit } = useForm();
   const appointmentMutation = useCreateAppointment();
   const servicesQuery = useServices();
   const timeslotsQuery = useTimeslots();
 
   const { data: session } = useSession();
-
-  const initialState = {
-    date: "",
-    timeSlotId: "0",
-    serviceId: "0",
-    user: "",
-  };
-
-  const { onChange, onSubmit, values } = useForm(fireMutation, initialState);
-
-  const theValues: formValues = values;
-  async function fireMutation() {
-    appointmentMutation.mutate(theValues);
-  }
 
   // useEffect(() => {
   //   session?.user?.email;
@@ -53,10 +40,12 @@ export default function AppointmentForm() {
   // });
 
   return (
-    <form className="flex flex-col p-8" onSubmit={onSubmit}>
-      <pre>{JSON.stringify(values, null, 2)}</pre>
+    <form
+      className="flex flex-col p-8"
+      onSubmit={handleSubmit((data) => appointmentMutation.mutate(data))}
+    >
       <label htmlFor="date">Date</label>
-      <input name="date" type="date" onChange={onChange} />
+      <input {...register("date")} type="date" />
 
       <label htmlFor="service">
         <span>Time</span>
@@ -65,7 +54,7 @@ export default function AppointmentForm() {
         <></>
       ) : (
         <>
-          <select name="timeSlotId" onChange={onChange}>
+          <select {...register("timeSlotId")}>
             {timeslotsQuery.data?.data.map((time: Time) => (
               <option key={time.id} value={time.id}>
                 {time.slot}
@@ -81,7 +70,7 @@ export default function AppointmentForm() {
         <></>
       ) : (
         <>
-          <select name="serviceId" onChange={onChange}>
+          <select {...register("serviceId")}>
             {servicesQuery.data?.data.map((service: Service) => (
               <option key={service.id} value={service.id}>
                 {service.title}

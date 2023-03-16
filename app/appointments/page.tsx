@@ -1,4 +1,4 @@
-import AppointmentForm from "@/components/AppointmentForm";
+import BookAppointmentForm from "@/components/BookAppointmentForm";
 
 export default function page() {
   return (
@@ -10,7 +10,7 @@ export default function page() {
       </div>
 
       <div className="max-w-xl bg-gray-100 mx-auto rounded-xl shadow-xl">
-        <AppointmentForm />
+        <BookAppointmentForm />
       </div>
     </div>
   );
