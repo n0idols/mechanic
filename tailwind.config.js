@@ -14,6 +14,9 @@ module.exports = {
       //   spaceg: ["var(--font-spaceg"],
       //   sans: ["var(--font-spaceg)"],
       // },
+      backgroundImage: {
+        "hero-pattern": "url('/img/hero.jpg')",
+      },
       colors: {
         primary: "#4EE1A0",
         grey: "#d9d9d9",

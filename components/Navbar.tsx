@@ -10,7 +10,9 @@ export default function Navbar() {
         <div className="flex justify-between">
           {/* LOGO */}
           <div>
-            <h1 className="text-3xl font-bold italic">Autofy</h1>
+            <a href="/" className="text-3xl font-bold italic">
+              Autofy
+            </a>
           </div>
           {/* Primary Nav */}
           <div className="hidden items-center justify-center space-x-6 text-sm font-light md:flex">
