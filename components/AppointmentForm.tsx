@@ -68,7 +68,9 @@ export default function AppointmentForm() {
         <>
           <select name="timeSlotId" onChange={onChange}>
             {timeslotsQuery.data?.data.map((time: Time) => (
-              <option value={time.id}>{time.slot}</option>
+              <option key={time.id} value={time.id}>
+                {time.slot}
+              </option>
             ))}
           </select>
         </>
@@ -82,7 +84,9 @@ export default function AppointmentForm() {
         <>
           <select name="serviceId" onChange={onChange}>
             {servicesQuery.data?.data.map((service: Service) => (
-              <option value={service.id}>{service.title}</option>
+              <option key={service.id} value={service.id}>
+                {service.title}
+              </option>
             ))}
           </select>
         </>
