@@ -70,6 +70,7 @@ model Appointment {
 model Service {
   id           Int           @id @default(autoincrement())
   title        String
+  desc         String
   appointments Appointment[]
 }
 
