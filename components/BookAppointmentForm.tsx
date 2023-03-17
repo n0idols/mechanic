@@ -4,7 +4,7 @@ import useCreateAppointment from "@/hooks/useCreateAppointment";
 import useServices from "@/hooks/useServices";
 import useTimeslots from "@/hooks/useTimeslots";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+
 import { useForm } from "react-hook-form";
 
 interface Time {
@@ -18,14 +18,7 @@ interface Service {
   desc: string;
 }
 
-interface formValues {
-  date: string;
-  timeSlotId: string;
-  serviceId: string;
-  user: string;
-}
-
-export default function AppointmentForm() {
+export default function AppointmentForm({ services, timeslots }: any) {
   const { register, handleSubmit } = useForm();
   const appointmentMutation = useCreateAppointment();
   const servicesQuery = useServices();
@@ -50,35 +43,34 @@ export default function AppointmentForm() {
       <label htmlFor="service">
         <span>Time</span>
       </label>
-      {timeslotsQuery.isLoading ? (
-        <></>
-      ) : (
-        <>
-          <select {...register("timeSlotId")}>
-            {timeslotsQuery.data?.data.map((time: Time) => (
+
+      {/* <select {...register("timeSlotId")}>
+            {timeslots.data?.data.map((time: Time) => (
               <option key={time.id} value={time.id}>
                 {time.slot}
               </option>
             ))}
-          </select>
-        </>
-      )}
+          </select> */}
+
+      <select {...register("timeSlotId")}>
+        {timeslots.map((time: Time) => (
+          <option key={time.id} value={time.id}>
+            {time.slot}
+          </option>
+        ))}
+      </select>
+
       <label htmlFor="service">
         <span>Service</span>
       </label>
-      {servicesQuery.isLoading ? (
-        <></>
-      ) : (
-        <>
-          <select {...register("serviceId")}>
-            {servicesQuery.data?.data.map((service: Service) => (
-              <option key={service.id} value={service.id}>
-                {service.title}
-              </option>
-            ))}
-          </select>
-        </>
-      )}
+
+      <select {...register("serviceId")}>
+        {services.map((service: Service) => (
+          <option key={service.id} value={service.id}>
+            {service.title}
+          </option>
+        ))}
+      </select>
 
       {/* <fieldset className="border border-gray-300 p-4">
               <legend className="text-sm font-black uppercase">
