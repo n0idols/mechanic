@@ -4,9 +4,13 @@ import BookAppointmentForm from "@/components/BookAppointmentForm";
 // const timeslots = await res2.json();
 
 export default async function page() {
-  const servicesData = await fetch(`http://localhost:3000/api/services/get`);
+  const servicesData = await fetch(
+    `https://mechanic-sable.vercel.app/api/services/get`
+  );
   const services = await servicesData.json();
-  const timeslotsData = await fetch(`http://localhost:3000/api/timeslots/get`);
+  const timeslotsData = await fetch(
+    `https://mechanic-sable.vercel.app/api/timeslots/get`
+  );
   const timeslots = await timeslotsData.json();
   return (
     <div>
