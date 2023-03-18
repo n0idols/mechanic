@@ -1,4 +1,5 @@
-import BookAppointmentForm from "@/components/BookAppointmentForm";
+import AppointmentForm from "@/components/AppointmentForm";
+import { useSession } from "next-auth/react";
 
 // const res2 = await fetch("/api/timeslots/get");
 // const timeslots = await res2.json();
@@ -12,6 +13,8 @@ export default async function page() {
     `https://mechanic-sable.vercel.app/api/timeslots/get`
   );
   const timeslots = await timeslotsData.json();
+
+  useSession;
   return (
     <div>
       <div className="py-24 bg-gray-700">
@@ -21,7 +24,7 @@ export default async function page() {
       </div>
 
       <div className="max-w-xl bg-white mx-auto rounded-xl shadow-xl">
-        <BookAppointmentForm services={services} timeslots={timeslots} />
+        <AppointmentForm services={services} timeslots={timeslots} />
       </div>
     </div>
   );

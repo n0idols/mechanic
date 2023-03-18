@@ -1,11 +1,10 @@
 "use client";
 
 import useCreateAppointment from "@/hooks/useCreateAppointment";
-import useServices from "@/hooks/useServices";
-import useTimeslots from "@/hooks/useTimeslots";
 import { useSession } from "next-auth/react";
-
-import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { FieldValues, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 interface Time {
   id: string;
@@ -20,39 +19,31 @@ interface Service {
 
 export default function AppointmentForm({ services, timeslots }: any) {
   const { register, handleSubmit } = useForm();
-  const appointmentMutation = useCreateAppointment();
-  const servicesQuery = useServices();
-  const timeslotsQuery = useTimeslots();
-
   const { data: session } = useSession();
+  // const [user, setUser] = useState("");
+  const appointmentMutation = useCreateAppointment();
 
   // useEffect(() => {
-  //   session?.user?.email;
-
-  //   setValues({ ...values, user: session?.user?.email });
+  //   setUser(session?.user?.email || "");
   // });
+
+  const handleMutation = (data: FieldValues) => {
+    appointmentMutation.mutate(data);
+    toast.success("Appointment Set!");
+  };
 
   return (
     <form
       className="flex flex-col p-8"
-      // onSubmit={handleSubmit((data) => appointmentMutation.mutate(data))}
-      onSubmit={handleSubmit((data) => console.log(data))}
+      onSubmit={handleSubmit((data) => handleMutation(data))}
+      // onSubmit={handleSubmit((data) => console.log(data))}
     >
       <label htmlFor="date">Date</label>
+      {/* <input {...register("userId")} value={user} /> */}
       <input {...register("date")} type="date" />
-
       <label htmlFor="service">
         <span>Time</span>
       </label>
-
-      {/* <select {...register("timeSlotId")}>
-            {timeslots.data?.data.map((time: Time) => (
-              <option key={time.id} value={time.id}>
-                {time.slot}
-              </option>
-            ))}
-          </select> */}
-
       <select {...register("timeSlotId")}>
         {timeslots.map((time: Time) => (
           <option key={time.id} value={time.id}>
@@ -60,11 +51,9 @@ export default function AppointmentForm({ services, timeslots }: any) {
           </option>
         ))}
       </select>
-
       <label htmlFor="service">
         <span>Service</span>
       </label>
-
       <select {...register("serviceId")}>
         {services.map((service: Service) => (
           <option key={service.id} value={service.id}>
@@ -72,7 +61,6 @@ export default function AppointmentForm({ services, timeslots }: any) {
           </option>
         ))}
       </select>
-
       {/* <fieldset className="border border-gray-300 p-4">
               <legend className="text-sm font-black uppercase">
                 The Details
@@ -80,8 +68,11 @@ export default function AppointmentForm({ services, timeslots }: any) {
               <label htmlFor="date">Notes</label>
               <input type="textarea" onChange={(e) => setDate(e.target.value)} />
             </fieldset> */}
-
-      <button className="btn" type="submit">
+      <button
+        className={appointmentMutation.isLoading ? "btn bg-red-500" : "btn"}
+        type="submit"
+        disabled={appointmentMutation.isLoading}
+      >
         Submit
       </button>
     </form>
