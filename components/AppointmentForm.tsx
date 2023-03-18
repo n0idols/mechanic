@@ -35,8 +35,8 @@ export default function AppointmentForm({ services, timeslots }: any) {
   return (
     <form
       className="flex flex-col p-8"
-      onSubmit={handleSubmit((data) => handleMutation(data))}
-      // onSubmit={handleSubmit((data) => console.log(data))}
+      // onSubmit={handleSubmit((data) => handleMutation(data))}
+      onSubmit={handleSubmit((data) => console.log(data))}
     >
       <label htmlFor="date">Date</label>
       {/* <input {...register("userId")} value={user} /> */}
