@@ -2,9 +2,10 @@
 
 import useCreateAppointment from "@/hooks/useCreateAppointment";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+
 import { FieldValues, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import Calendar from "./Calendar";
 
 interface Time {
   id: string;
@@ -35,12 +36,12 @@ export default function AppointmentForm({ services, timeslots }: any) {
   return (
     <form
       className="flex flex-col p-8"
-      // onSubmit={handleSubmit((data) => handleMutation(data))}
-      onSubmit={handleSubmit((data) => console.log(data))}
+      onSubmit={handleSubmit((data) => handleMutation(data))}
+      // onSubmit={handleSubmit((data) => console.log(data))}
     >
-      <label htmlFor="date">Date</label>
+      <Calendar />
       {/* <input {...register("userId")} value={user} /> */}
-      <input {...register("date")} type="date" />
+      {/* <input {...register("date")} type="date" /> */}
       <label htmlFor="service">
         <span>Time</span>
       </label>
