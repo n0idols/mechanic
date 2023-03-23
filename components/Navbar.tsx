@@ -5,24 +5,27 @@ export default function Navbar() {
   const [isMob, setMob] = useState(false);
 
   return (
-    <nav className="bg-gray-200 s">
+    <nav className="bg-gray-700 text-white tracking-wider">
       <div className="container py-4">
         <div className="flex justify-between">
           {/* LOGO */}
           <div>
-            <a href="/" className="text-3xl font-bold italic">
+            <a
+              href="/"
+              className="text-white font-bold text-3xl bg-gradient-to-r from-purple-500 to-pink-500 inline-block px-4 py-2 italic rounded-xl"
+            >
               Autofy
             </a>
           </div>
           {/* Primary Nav */}
-          <div className="hidden items-center justify-center space-x-6 text-sm font-light md:flex">
+          <div className=" hidden items-center justify-center space-x-6 font-light md:flex">
             <a href="/services">Services</a>
             <a href="/appointments">Appointments</a>
             <a href="/about">How it Works</a>
           </div>
 
           {/* secondary nav */}
-          <div className=" hidden items-center space-x-4 text-sm font-light md:flex">
+          <div className=" hidden items-center space-x-4  font-light md:flex">
             <a href="/account">Account</a>
           </div>
 

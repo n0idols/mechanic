@@ -6,20 +6,18 @@ import {
   format,
   getDay,
   isEqual,
-  isSameDay,
   isSameMonth,
   isToday,
   parse,
-  parseISO,
   startOfToday,
 } from "date-fns";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 
 function classNames(...classes: (string | boolean)[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Calendar() {
+export default function Calendar({ onChange }: { onChange: any }) {
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today);
   let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
@@ -40,8 +38,13 @@ export default function Calendar() {
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
   }
 
+  function handleChange(day: Date) {
+    setSelectedDay(day);
+    onChange(day);
+  }
+
   return (
-    <div className="">
+    <div className="border-8 mb-4">
       <div className="max-w-md px-4 py-4 mx-auto md:max-w-4xl md:px-6 ">
         <div className="">
           <div className="">
@@ -86,7 +89,7 @@ export default function Calendar() {
                 >
                   <button
                     type="button"
-                    onClick={() => setSelectedDay(day)}
+                    onClick={() => handleChange(day)}
                     className={classNames(
                       isEqual(day, selectedDay) && "text-white",
                       !isEqual(day, selectedDay) &&
