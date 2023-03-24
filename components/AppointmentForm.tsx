@@ -44,8 +44,9 @@ export default function AppointmentForm({ services, timeslots }: any) {
           <input
             {...register("userId")}
             type="hidden"
-            value="232323"
-            // value="232323"
+            // @ts-ignore
+            value={session?.user?.id}
+            // value="clfbe7u2v0000ms08kpu6tukg"
           />
         )}
         <Controller
