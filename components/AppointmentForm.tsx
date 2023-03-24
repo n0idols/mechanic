@@ -1,6 +1,7 @@
 "use client";
 
 import useCreateAppointment from "@/hooks/useCreateAppointment";
+import { useSession } from "next-auth/react";
 
 import { Controller, FieldValues, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -17,7 +18,9 @@ interface Service {
   desc: string;
 }
 
-export default function AppointmentForm({ session, services, timeslots }: any) {
+export default function AppointmentForm({ services, timeslots }: any) {
+  const { data: session } = useSession();
+
   const { register, handleSubmit, control } = useForm();
   const appointmentMutation = useCreateAppointment();
   const handleMutation = (data: FieldValues) => {
@@ -31,6 +34,7 @@ export default function AppointmentForm({ session, services, timeslots }: any) {
   };
   return (
     <>
+      <pre>{JSON.stringify(session, null, 2)}</pre>
       <form
         className="flex flex-col p-8"
         onSubmit={handleSubmit((data) => handleMutation(data))}
