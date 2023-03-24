@@ -1,4 +1,3 @@
-import Appointment from "@/components/Appointment";
 import AppointmentForm from "@/components/AppointmentForm";
 import PageHero from "@/components/PageHero";
 import Paper from "@/components/Paper";
@@ -17,10 +16,7 @@ export default async function page() {
     `${process.env.NEXT_PUBLIC_API_ROUTE}/api/timeslots/get`
   );
   const timeslots = await timeslotsData.json();
-  const apptData = await fetch(
-    `${process.env.NEXT_PUBLIC_API_ROUTE}/api/appointments/get`
-  );
-  const appointments = await apptData.json();
+
   return (
     <section>
       <PageHero title="Book an Appointment" />
