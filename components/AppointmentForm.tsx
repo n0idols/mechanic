@@ -44,7 +44,7 @@ export default function AppointmentForm({ services, timeslots }: any) {
           <input
             {...register("userId")}
             type="hidden"
-            value={session?.user?.id}
+            value="232323"
             // value="232323"
           />
         )}
