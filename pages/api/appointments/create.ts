@@ -1,26 +1,27 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@/prisma/client";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]";
+import { NextResponse } from "next/server";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
+      status: 401,
+    });
+  }
   if (req.method === "POST") {
     try {
-      // const prismaUser = await prisma.user.findUnique({
-      //   where: { email: req.body.user },
-      // });
-      // if (!prismaUser) {
-      //   res.status(401).json({ error: "Unauthorized" });
-      // }
-
-      // console.log(prismaUser);
       const data = await prisma.appointment.create({
         data: {
           date: req.body.date,
           timeSlotId: Number(req.body.timeSlotId),
           serviceId: Number(req.body.serviceId),
-          // userId: "clevwe10l00006stz71h1ss8u",
+          userId: req.body.userId,
         },
       });
       res.status(200).json(data);

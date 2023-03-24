@@ -21,7 +21,7 @@ export default function Navbar() {
           <div className=" hidden items-center justify-center space-x-6 font-light md:flex">
             <a href="/services">Services</a>
             <a href="/appointments">Appointments</a>
-            <a href="/about">How it Works</a>
+            <a href="/contact">Contact</a>
           </div>
 
           {/* secondary nav */}

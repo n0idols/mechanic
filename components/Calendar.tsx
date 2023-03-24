@@ -45,6 +45,7 @@ export default function Calendar({ onChange }: { onChange: any }) {
 
   return (
     <div className="border-8 mb-4">
+      <h1>{JSON.stringify(selectedDay)}</h1>
       <div className="max-w-md px-4 py-4 mx-auto md:max-w-4xl md:px-6 ">
         <div className="">
           <div className="">

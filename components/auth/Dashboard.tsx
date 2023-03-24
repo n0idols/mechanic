@@ -1,21 +1,18 @@
-"use client";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
+import LoginBtn from "../LoginBtn";
+import Paper from "../Paper";
 
-export default function Dashboard() {
-  const { data: session } = useSession();
-  if (session) {
-    return (
-      <>
-        <pre>{JSON.stringify(session, null, 2)}</pre>
-        Signed in as {session?.user?.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    );
-  }
+export default async function Dashboard() {
+  const session = await getServerSession(authOptions);
+
   return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
+    <Paper>
+      <LoginBtn />
+      {/* <pre>{JSON.stringify(session, null, 2)}</pre> */}
+      <h1>Welcome, {session?.user?.name}! 👋</h1>
+
+      <h1>My Appointments</h1>
+    </Paper>
   );
 }
