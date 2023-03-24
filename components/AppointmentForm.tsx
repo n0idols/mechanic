@@ -1,10 +1,8 @@
-"use client";
-
 import useCreateAppointment from "@/hooks/useCreateAppointment";
 import { useSession } from "next-auth/react";
 
 import { Controller, FieldValues, useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
+
 import Calendar from "./Calendar";
 
 interface Time {
@@ -24,9 +22,10 @@ export default function AppointmentForm({ session, services, timeslots }: any) {
   const handleMutation = (data: FieldValues) => {
     try {
       appointmentMutation.mutate(data);
-      toast.success("Appointment Set!");
+
+      // toast.success("Appointment Set!");
     } catch (error) {
-      toast.error(`{error}}`);
+      // toast.error(`{error}}`);
     }
   };
   return (
@@ -36,12 +35,14 @@ export default function AppointmentForm({ session, services, timeslots }: any) {
         onSubmit={handleSubmit((data) => handleMutation(data))}
         // onSubmit={handleSubmit((data) => console.log(data))}
       >
-        <input
-          {...register("userId")}
-          type="hidden"
-          value={session?.user?.id}
-          // value="232323"
-        />
+        {session && (
+          <input
+            {...register("userId")}
+            type="hidden"
+            value={session?.user?.id}
+            // value="232323"
+          />
+        )}
         <Controller
           control={control}
           name="date"
