@@ -1,5 +1,6 @@
+"use client";
+
 import useCreateAppointment from "@/hooks/useCreateAppointment";
-import { useSession } from "next-auth/react";
 
 import { Controller, FieldValues, useForm } from "react-hook-form";
 
@@ -16,7 +17,7 @@ interface Service {
   desc: string;
 }
 
-export default function AppointmentForm({ session, services, timeslots }: any) {
+export default function AppointmentForm({ services, timeslots }: any) {
   const { register, handleSubmit, control } = useForm();
   const appointmentMutation = useCreateAppointment();
   const handleMutation = (data: FieldValues) => {
@@ -35,14 +36,14 @@ export default function AppointmentForm({ session, services, timeslots }: any) {
         onSubmit={handleSubmit((data) => handleMutation(data))}
         // onSubmit={handleSubmit((data) => console.log(data))}
       >
-        {session && (
+        {/* {session && (
           <input
             {...register("userId")}
             type="hidden"
             value={session?.user?.id}
             // value="232323"
           />
-        )}
+        )} */}
         <Controller
           control={control}
           name="date"

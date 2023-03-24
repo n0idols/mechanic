@@ -21,11 +21,7 @@ export default async function page() {
     <section>
       <PageHero title="Book an Appointment" />
       <Paper>
-        <AppointmentForm
-          session={session}
-          services={services}
-          timeslots={timeslots}
-        />
+        <AppointmentForm services={services} timeslots={timeslots} />
       </Paper>
     </section>
   );
