@@ -2,7 +2,7 @@ import React from "react";
 
 export default function About() {
   return (
-    <div className="bg-green-300 py-16">
+    <div className="bg-gray-300 py-16">
       <div className="container">
         <div className="sm:text-center lg:text-left">
           <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
