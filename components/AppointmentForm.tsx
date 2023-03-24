@@ -1,7 +1,6 @@
 "use client";
 
 import useCreateAppointment from "@/hooks/useCreateAppointment";
-import { useSession } from "next-auth/react";
 
 import { Controller, FieldValues, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -24,6 +23,7 @@ export default function AppointmentForm({ session, services, timeslots }: any) {
   const handleMutation = (data: FieldValues) => {
     try {
       appointmentMutation.mutate(data);
+      console.log(data);
       toast.success("Appointment Set!");
     } catch (error) {
       toast.error(`{error}}`);
